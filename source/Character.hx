@@ -339,6 +339,10 @@ class Character extends FlxSprite
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
 	{
+		if(animation.getByName(AnimName) == null)
+		{
+			return;
+		}
 		specialAnim = false;
 		animation.play(AnimName, Force, Reversed, Frame);
 

@@ -1,8 +1,8 @@
 {
 	"song": {
-		"player1": "bf-holding-gf",
+		"player1": "mr-spike",
 		"events": [],
-		"gfVersion": "pico-speaker",
+		"gfVersion": "mr-cuts",
 		"notes": [
 			{
 				"sectionNotes": [
@@ -5070,7 +5070,7 @@
 				"mustHitSection": true
 			}
 		],
-		"player2": "tankman",
+		"player2": "dad",
 		"player3": null,
 		"song": "Stress",
 		"stage": "tank",
