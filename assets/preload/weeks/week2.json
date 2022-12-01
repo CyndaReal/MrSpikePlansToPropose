@@ -1,18 +1,18 @@
 {
 	"songs": [
-		["Spookeez", "spooky", [34, 51, 68]],
-		["South", "spooky", [34, 51, 68]],
-		["Monster", "monster", [34, 51, 68]]
+		["Marbles", "marbles", [34, 51, 68]],
+		["Plane", "marbles", [34, 51, 68]],
+		["Greyung", "greyung", [34, 51, 68]]
 	],
 
 	"weekCharacters": [
-		"spooky",
+		"marbles",
 		"bf",
 		"gf"
 	],
 	"weekBackground": "halloween",
 
-	"storyName": "Spooky Month",
+	"storyName": "Marble's Awesome Game!",
 	"weekBefore": "week1",
 	"weekName": "Week 2",
 	"startUnlocked": true,
