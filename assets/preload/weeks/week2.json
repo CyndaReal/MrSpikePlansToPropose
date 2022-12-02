@@ -1,7 +1,7 @@
 {
 	"songs": [
-		["Marbles", "marbles", [34, 51, 68]],
-		["Plane", "marbles", [34, 51, 68]],
+		["Marbles", "marbles", [255, 170, 98]],
+		["Plane", "marbles", [255, 170, 98]],
 		["Greyung", "greyung", [34, 51, 68]]
 	],
 

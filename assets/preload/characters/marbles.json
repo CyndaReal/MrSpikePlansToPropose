@@ -6,20 +6,9 @@
 				0
 			],
 			"loop": false,
-			"anim": "cheer",
+			"anim": "singLEFT",
 			"fps": 24,
-			"name": "cheer",
-			"indices": []
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
-			"anim": "sad",
-			"fps": 24,
-			"name": "cry",
+			"name": "left",
 			"indices": []
 		},
 		{
@@ -28,9 +17,9 @@
 				0
 			],
 			"loop": false,
-			"anim": "danceLeft",
+			"anim": "singDOWN",
 			"fps": 24,
-			"name": "danceleft",
+			"name": "down",
 			"indices": []
 		},
 		{
@@ -39,29 +28,51 @@
 				0
 			],
 			"loop": false,
-			"anim": "danceRight",
+			"anim": "singUP",
 			"fps": 24,
-			"name": "danceright",
+			"name": "up",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"loop": false,
+			"anim": "idle",
+			"fps": 24,
+			"name": "idle",
 			"indices": []
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/mrcuts",
+	"image": "characters/marbles",
 	"position": [
-		30,
-		110
+		-70,
+		180
 	],
-	"healthicon": "cuts",
+	"healthicon": "marbles",
 	"flip_x": false,
 	"healthbar_colors": [
-		165,
-		0,
-		77
+		255,
+		170,
+		98
 	],
 	"camera_position": [
-		-40,
-		0
+		20,
+		10
 	],
-	"sing_duration": 4.25,
-	"scale": 1.2
+	"sing_duration": 6.09999999999999,
+	"scale": 1
 }
