@@ -37,8 +37,8 @@
 	"no_antialiasing": true,
 	"image": "characters/mrspike",
 	"position": [
-		-70,
-		310
+		0,
+		0
 	],
 	"healthicon": "spike",
 	"flip_x": true,

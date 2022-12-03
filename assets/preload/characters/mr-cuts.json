@@ -7,7 +7,7 @@
 			],
 			"loop": false,
 			"anim": "cheer",
-			"fps": 24,
+			"fps": 12,
 			"name": "cheer",
 			"indices": []
 		},
@@ -18,7 +18,7 @@
 			],
 			"loop": true,
 			"anim": "sad",
-			"fps": 24,
+			"fps": 12,
 			"name": "cry",
 			"indices": []
 		},
@@ -29,7 +29,7 @@
 			],
 			"loop": false,
 			"anim": "danceLeft",
-			"fps": 24,
+			"fps": 12,
 			"name": "danceleft",
 			"indices": []
 		},
@@ -40,7 +40,7 @@
 			],
 			"loop": false,
 			"anim": "danceRight",
-			"fps": 24,
+			"fps": 12,
 			"name": "danceright",
 			"indices": []
 		}
@@ -48,8 +48,8 @@
 	"no_antialiasing": true,
 	"image": "characters/mrcuts",
 	"position": [
-		30,
-		110
+		0,
+		0
 	],
 	"healthicon": "cuts",
 	"flip_x": false,
@@ -63,5 +63,5 @@
 		0
 	],
 	"sing_duration": 4.25,
-	"scale": 1.2
+	"scale": 1
 }

@@ -38,7 +38,7 @@ class StageData {
 			switch (SONG.song.toLowerCase().replace(' ', '-'))
 			{
 				case 'marbles' | 'plane' | 'greyung':
-					stage = 'spooky';
+					stage = 'marbles';
 				case 'pico' | 'blammed' | 'philly' | 'philly-nice':
 					stage = 'philly';
 				case 'milf' | 'satin-panties' | 'high':
