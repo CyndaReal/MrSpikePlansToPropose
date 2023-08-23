@@ -1,103 +1,103 @@
 {
 	"animations": [
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				-10,
+				-70
+			],
 			"anim": "idle",
-			"indices": [],
-			"name": "idle"
+			"fps": 24,
+			"name": "idle",
+			"indices": []
 		},
 		{
-			"offsets": [
-				218,
-				6
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				190,
+				-10
+			],
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
-		},
-		{
-			"offsets": [
-				-54,
-				-184
-			],
-			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "down"
+			"name": "left",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-75,
-				39
-			],
 			"loop": false,
-			"fps": 24,
-			"anim": "singUP",
-			"indices": [],
-			"name": "up"
-		},
-		{
-			"offsets": [
-				-86,
-				-89
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
-		},
-		{
-			"offsets": [
-				217,
-				8
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFTmiss",
-			"indices": [],
-			"name": "mleft"
-		},
-		{
-			"offsets": [
-				-53,
-				-183
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWNmiss",
-			"indices": [],
-			"name": "mdown"
-		},
-		{
 			"offsets": [
 				-74,
-				41
+				-190
 			],
-			"loop": false,
+			"anim": "singDOWN",
 			"fps": 24,
-			"anim": "singUPmiss",
-			"indices": [],
-			"name": "mup"
+			"name": "down",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-87,
-				-88
-			],
 			"loop": false,
+			"offsets": [
+				-80,
+				34
+			],
+			"anim": "singUP",
 			"fps": 24,
+			"name": "up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-102,
+				-160
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				190,
+				-12
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"name": "mleft",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-71,
+				-182
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"name": "mdown",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-75,
+				34
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"name": "mup",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-113,
+				-161
+			],
 			"anim": "singRIGHTmiss",
-			"indices": [],
-			"name": "mright"
+			"fps": 24,
+			"name": "mright",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
@@ -109,13 +109,13 @@
 	"healthicon": "spike",
 	"flip_x": true,
 	"healthbar_colors": [
-		255,
-		0,
-		0
+		186,
+		3,
+		48
 	],
 	"camera_position": [
-		20,
-		130
+		60,
+		220
 	],
 	"sing_duration": 6.1,
 	"scale": 1

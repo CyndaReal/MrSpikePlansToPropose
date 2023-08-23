@@ -54,9 +54,9 @@
 	"healthicon": "cuts",
 	"flip_x": false,
 	"healthbar_colors": [
-		165,
 		0,
-		77
+		153,
+		204
 	],
 	"camera_position": [
 		-40,

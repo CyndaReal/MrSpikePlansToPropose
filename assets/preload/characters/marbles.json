@@ -65,9 +65,9 @@
 	"healthicon": "marbles",
 	"flip_x": false,
 	"healthbar_colors": [
-		255,
-		170,
-		98
+		179,
+		224,
+		154
 	],
 	"camera_position": [
 		60,

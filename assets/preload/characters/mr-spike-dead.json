@@ -43,9 +43,9 @@
 	"healthicon": "spike",
 	"flip_x": true,
 	"healthbar_colors": [
-		255,
-		0,
-		0
+		186,
+		3,
+		48
 	],
 	"camera_position": [
 		0,
