@@ -644,7 +644,7 @@ class ChartingState extends MusicBeatState
 
 	var stepperBeats:FlxUINumericStepper;
 	var check_mustHitSection:FlxUICheckBox;
-	var check_gfSection:FlxUICheckBox;
+	var spikeCutsStepper:FlxUINumericStepper;
 	var check_changeBPM:FlxUICheckBox;
 	var stepperSectionBPM:FlxUINumericStepper;
 	var check_altAnim:FlxUICheckBox;
@@ -661,12 +661,11 @@ class ChartingState extends MusicBeatState
 		check_mustHitSection.name = 'check_mustHit';
 		check_mustHitSection.checked = _song.notes[curSec].mustHitSection;
 
-		check_gfSection = new FlxUICheckBox(10, check_mustHitSection.y + 22, null, null, "GF section", 100);
-		check_gfSection.name = 'check_gf';
-		check_gfSection.checked = _song.notes[curSec].gfSection;
-		// _song.needsVoices = check_mustHit.checked;
+		spikeCutsStepper = new FlxUINumericStepper(10, check_mustHitSection.y + 22, 1, 0, 0, 2, 0);
+		spikeCutsStepper.name = 'section_spikecuts';
+		spikeCutsStepper.value = _song.notes[curSec].spikeCutsState;
 
-		check_altAnim = new FlxUICheckBox(check_gfSection.x + 120, check_gfSection.y, null, null, "Alt Animation", 100);
+		check_altAnim = new FlxUICheckBox(spikeCutsStepper.x + 120, spikeCutsStepper.y, null, null, "Alt Animation", 100);
 		check_altAnim.checked = _song.notes[curSec].altAnim;
 
 		stepperBeats = new FlxUINumericStepper(10, 100, 1, 4, 1, 6, 2);
@@ -895,7 +894,8 @@ class ChartingState extends MusicBeatState
 		tab_group_section.add(stepperBeats);
 		tab_group_section.add(stepperSectionBPM);
 		tab_group_section.add(check_mustHitSection);
-		tab_group_section.add(check_gfSection);
+		tab_group_section.add(new FlxText(spikeCutsStepper.x, spikeCutsStepper.y - 15, 0, 'Spike/Cuts:'));
+		tab_group_section.add(spikeCutsStepper);
 		tab_group_section.add(check_altAnim);
 		tab_group_section.add(check_changeBPM);
 		tab_group_section.add(copyButton);
@@ -1411,12 +1411,6 @@ class ChartingState extends MusicBeatState
 					updateGrid();
 					updateHeads();
 
-				case 'GF section':
-					_song.notes[curSec].gfSection = check.checked;
-
-					updateGrid();
-					updateHeads();
-
 				case 'Change BPM':
 					_song.notes[curSec].changeBPM = check.checked;
 					FlxG.log.add('changed bpm shit');
@@ -1463,6 +1457,10 @@ class ChartingState extends MusicBeatState
 			else if (wname == 'voices_volume')
 			{
 				vocals.volume = nums.value;
+			}
+			else if (wname == 'section_spikecuts')
+			{
+				_song.notes[curSec].spikeCutsState = Std.int(nums.value);
 			}
 		}
 		else if(id == FlxUIInputText.CHANGE_EVENT && (sender is FlxUIInputText)) {
@@ -2479,7 +2477,7 @@ class ChartingState extends MusicBeatState
 
 		stepperBeats.value = getSectionBeats();
 		check_mustHitSection.checked = sec.mustHitSection;
-		check_gfSection.checked = sec.gfSection;
+		spikeCutsStepper.value = sec.spikeCutsState;
 		check_altAnim.checked = sec.altAnim;
 		check_changeBPM.checked = sec.changeBPM;
 		stepperSectionBPM.value = sec.bpm;
@@ -2745,7 +2743,8 @@ class ChartingState extends MusicBeatState
 			gfSection: false,
 			sectionNotes: [],
 			typeOfSection: 0,
-			altAnim: false
+			altAnim: false,
+			spikeCutsState: 0
 		};
 
 		_song.notes.push(sec);

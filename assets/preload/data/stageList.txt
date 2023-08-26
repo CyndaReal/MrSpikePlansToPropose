@@ -1,9 +1,2 @@
 stage
 marbles
-philly
-limo
-mall
-mallEvil
-school
-schoolEvil
-tank
