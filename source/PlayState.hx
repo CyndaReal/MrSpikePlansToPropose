@@ -1024,7 +1024,7 @@ class PlayState extends MusicBeatState
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 
-				case 'ugh' | 'guns' | 'stress':
+				case 'marbles' | 'guns' | 'stress':
 					tankIntro();
 
 				default:
@@ -1458,18 +1458,20 @@ class PlayState extends MusicBeatState
 		});
 	}
 
+	public var forceDisableZoomShit:Bool = false;
+
 	function tankIntro()
 	{
+		forceDisableZoomShit = true;
 		var cutsceneHandler:CutsceneHandler = new CutsceneHandler();
 
-		var songName:String = Paths.formatToSongPath(SONG.song);
+		var songName:String = "marbles";
 		dadGroup.alpha = 0.00001;
 		camHUD.visible = false;
 		//inCutscene = true; //this would stop the camera movement, oops
 
-		var tankman:FlxSprite = new FlxSprite(-20, 320);
-		tankman.frames = Paths.getSparrowAtlas('cutscenes/' + songName);
-		tankman.antialiasing = ClientPrefs.globalAntialiasing;
+		var tankman:FlxSprite = new FlxSprite(dad.x, dad.y);
+		tankman.frames = Paths.getSparrowAtlas("marbles_cutscenes");
 		addBehindDad(tankman);
 		cutsceneHandler.push(tankman);
 
@@ -1505,7 +1507,10 @@ class PlayState extends MusicBeatState
 			gf.dance();
 		};
 
-		camFollow.set(dad.x + 280, dad.y + 170);
+		camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+		camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+		camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+
 		switch(songName)
 		{
 			case 'ugh':
@@ -1553,6 +1558,85 @@ class PlayState extends MusicBeatState
 					// We should just kill you but... what the hell, it's been a boring day... let's see what you've got!
 					tankman.animation.play('killYou', true);
 					FlxG.sound.play(Paths.sound('killYou'));
+				});
+
+			case 'marbles':
+				cutsceneHandler.endTime = 24;
+				cutsceneHandler.music = 'cutsceneThing';
+				precacheList.set('marbles/marbles_1', 'sound');
+				precacheList.set('marbles/marbles_2', 'sound');
+				precacheList.set('marbles/marbles_3', 'sound');
+
+				precacheList.set('marbles/spike_1', 'sound');
+				precacheList.set('marbles/spike_2', 'sound');
+
+				var wellWellWell:FlxSound = new FlxSound().loadEmbedded(Paths.sound('marbles/marbles_1'));
+				FlxG.sound.list.add(wellWellWell);
+
+				tankman.animation.addByPrefix('marbles_1', 'marbles_1', 24, false);
+				tankman.animation.addByPrefix('marbles_2', 'marbles_2', 24, false);
+				tankman.animation.addByPrefix('marbles_3', 'marbles_3', 24, false);
+				tankman.animation.play('marbles_1', true);
+				FlxG.camera.zoom *= 1.2;
+
+				// Well well well, what do we got here?
+				cutsceneHandler.timer(0.1, function()
+				{
+					wellWellWell.play(true);
+				});
+
+				// Move camera to BF
+				cutsceneHandler.timer(6.5, function()
+				{
+					camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+					camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
+					camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+				});
+
+				// Beep!
+				cutsceneHandler.timer(7.95, function()
+				{
+					boyfriend.canDance = false;
+
+					boyfriend.playAnim('singDOWN', true);
+					FlxG.sound.play(Paths.sound('marbles/spike_1'));
+				});
+
+				// Move camera to Tankman
+				cutsceneHandler.timer(10, function()
+				{
+					boyfriend.canDance = true;
+
+					camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+					camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+					camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+
+					// We should just kill you but... what the hell, it's been a boring day... let's see what you've got!
+					tankman.animation.play('marbles_2', true);
+					FlxG.sound.play(Paths.sound('marbles/marbles_2'));
+				});
+
+				cutsceneHandler.timer(15, function()
+				{
+					camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+					camFollow.x -= boyfriend.cameraPosition[0] - boyfriendCameraOffset[0];
+					camFollow.y += boyfriend.cameraPosition[1] + boyfriendCameraOffset[1];
+
+					boyfriend.canDance = false;
+					boyfriend.playAnim('singUP', true);
+					FlxG.sound.play(Paths.sound('marbles/spike_2'));
+				});
+
+				cutsceneHandler.timer(21, function()
+				{
+					boyfriend.canDance = true;
+
+					camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+					camFollow.x += dad.cameraPosition[0] + opponentCameraOffset[0];
+					camFollow.y += dad.cameraPosition[1] + opponentCameraOffset[1];
+
+					tankman.animation.play('marbles_3', true);
+					FlxG.sound.play(Paths.sound('marbles/marbles_3'));
 				});
 
 			case 'guns':
@@ -2820,8 +2904,11 @@ class PlayState extends MusicBeatState
 		}
 
 
-		FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom + gfZoomAdd, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * camZoomingDecay * playbackRate), 0, 1));
-		camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * camZoomingDecay * playbackRate), 0, 1));
+		if(!forceDisableZoomShit)
+		{
+			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom + gfZoomAdd, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * camZoomingDecay * playbackRate), 0, 1));
+			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * camZoomingDecay * playbackRate), 0, 1));
+		}
 
 		FlxG.watch.addQuick("secShit", curSection);
 		FlxG.watch.addQuick("beatShit", curBeat);

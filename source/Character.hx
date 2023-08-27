@@ -49,6 +49,9 @@ class Character extends FlxSprite
 	public var animOffsets:Map<String, Array<Dynamic>>;
 	public var debugMode:Bool = false;
 
+	public var canDance:Bool = true;
+	public var canSing:Bool = true;
+
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = DEFAULT_CHARACTER;
 
@@ -320,7 +323,7 @@ class Character extends FlxSprite
 	 */
 	public function dance()
 	{
-		if (!debugMode && !skipDance && !specialAnim)
+		if (!debugMode && !skipDance && !specialAnim && canDance)
 		{
 			if(danceIdle)
 			{
@@ -342,6 +345,13 @@ class Character extends FlxSprite
 		if(animation.getByName(AnimName) == null)
 		{
 			return;
+		}
+		if(AnimName.toLowerCase().startsWith("sing"))
+		{
+			if(!canSing)
+			{
+				return;
+			}
 		}
 		specialAnim = false;
 		animation.play(AnimName, Force, Reversed, Frame);

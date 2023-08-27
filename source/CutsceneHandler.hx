@@ -56,6 +56,8 @@ class CutsceneHandler extends FlxBasic
 		cutsceneTime += elapsed;
 		if(endTime <= cutsceneTime)
 		{
+			PlayState.instance.forceDisableZoomShit = false;
+			
 			finishCallback();
 			if(finishCallback2 != null) finishCallback2();
 
