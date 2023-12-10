@@ -2654,6 +2654,72 @@ class PlayState extends MusicBeatState
 		}*/
 		callOnLuas('onUpdate', [elapsed]);
 
+		if(dad != null)
+		{
+			if(dad.animation.curAnim != null)
+			{
+				if(dad.animation.curAnim.name.toLowerCase().startsWith("sing"))
+				{
+					if(dad.singDuration >= 10)
+					{
+						if(dad.animation.curAnim.finished)
+						{
+							dad.dance();
+							dad.holdTimer = 0;
+							if(!dad.animation.curAnim.looped)
+							{
+								dad.animation.finish();
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if(boyfriend != null)
+		{
+			if(boyfriend.animation.curAnim != null)
+			{
+				if(boyfriend.animation.curAnim.name.toLowerCase().startsWith("sing"))
+				{
+					if(boyfriend.singDuration >= 10)
+					{
+						if(boyfriend.animation.curAnim.finished)
+						{
+							boyfriend.dance();
+							boyfriend.holdTimer = 0;
+							if(!boyfriend.animation.curAnim.looped)
+							{
+								boyfriend.animation.finish();
+							}
+						}
+					}
+				}
+			}
+		}
+
+		if(gf != null)
+		{
+			if(gf.animation.curAnim != null)
+			{
+				if(gf.animation.curAnim.name.toLowerCase().startsWith("sing"))
+				{
+					if(gf.singDuration >= 10)
+					{
+						if(gf.animation.curAnim.finished)
+						{
+							gf.dance();
+							gf.holdTimer = 0;
+							if(!gf.animation.curAnim.looped)
+							{
+								gf.animation.finish();
+							}
+						}
+					}
+				}
+			}
+		}
+
 		switch (curStage)
 		{
 			case 'tank':
